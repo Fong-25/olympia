@@ -39,7 +39,7 @@ export const signup = async (req, res) => {
             email,
             password: hashedPassword,
         })
-        const token = jwt.sign({ userId: newUser.id, }, JWT_SECRET, { expiresIn: '30' })
+        const token = jwt.sign({ userId: newUser.id, }, JWT_SECRET, { expiresIn: '30d' })
 
         res.cookie('token', token, {
             httpOnly: true,
@@ -77,7 +77,7 @@ export const login = async (req, res) => {
         if (!isMatch) {
             return res.status(401).json({ message: 'Invalid credentials' })
         }
-        const token = jwt.sign({ userId: user.id, }, JWT_SECRET, { expiresIn: '30' })
+        const token = jwt.sign({ userId: user.id, }, JWT_SECRET, { expiresIn: '30d' })
 
         res.cookie('token', token, {
             httpOnly: true,
@@ -110,3 +110,27 @@ export const logout = async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' })
     }
 }
+
+export const getCurrentUser = async (req, res) => {
+    try {
+        const token = req.cookies?.token;
+        if (!token) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        console.log(decoded.userId)
+
+        const user = await getUserById(decoded.userId)
+        console.log(user)
+        return res.status(200).json({
+            id: user.id,
+            fullName: user.fullName,
+            email: user.email,
+            avatarUrl: user.avatarUrl
+        });
+    } catch (error) {
+        console.error("Get current user error:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};
