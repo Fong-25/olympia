@@ -1,0 +1,196 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String // hashed
+  fullName  String
+  avatarUrl String? // Cloudinary URL
+  createdAt DateTime @default(now())
+
+  createdRooms   Room[]            @relation("RoomCreator")
+  participations RoomParticipant[]
+}
+
+model Room {
+  id          String   @id @default(cuid())
+  name        String // doubles as passcode
+  createdById String
+  createdBy   User     @relation("RoomCreator", fields: [createdById], references: [id])
+  createdAt   DateTime @default(now())
+  isActive    Boolean  @default(true)
+  isArchived  Boolean  @default(false)
+
+  questions    Question[]
+  participants RoomParticipant[]
+  gameState    GameState?
+  matchResults MatchResult?
+}
+
+model RoomParticipant {
+  id           String          @id @default(cuid())
+  roomId       String
+  userId       String
+  role         ParticipantRole // TECHNICIAN, MC, CANDIDATE, VIEWER
+  displayName  String // can differ from User.fullName
+  position     Int? // 1-4 for candidates, assigned by tech
+  currentScore Int             @default(0)
+  isEliminated Boolean         @default(false) // for Vuot chuong ngai vat
+  hasUsedStar  Boolean         @default(false) // for Ve dich
+  joinedAt     DateTime        @default(now())
+
+  room    Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id])
+  answers Answer[]
+
+  @@unique([roomId, userId])
+  @@index([roomId, role])
+}
+
+enum ParticipantRole {
+  TECHNICIAN
+  MC
+  CANDIDATE
+  VIEWER
+}
+
+model Question {
+  id            String       @id @default(cuid())
+  roomId        String
+  round         RoundType
+  type          QuestionType
+  content       String       @db.Text
+  correctAnswer String       @db.Text
+  points        Int
+  timeLimit     Int // seconds
+  orderIndex    Int // order within the round
+
+  // Media attachments
+  mediaUrl  String? // Cloudinary URL (image/audio/video)
+  mediaType MediaType?
+
+  // For Vuot chuong ngai vat specific
+  position       Int? // 1-4 for hàng ngang, 5 for center, null for obstacle
+  isObstacle     Boolean @default(false)
+  puzzleImageUrl String? // full puzzle image URL
+
+  // For Ve dich practical questions
+  isPractical  Boolean @default(false)
+  practiceTime Int? // seconds for practice portion
+
+  createdAt DateTime @default(now())
+
+  room    Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  answers Answer[]
+
+  @@index([roomId, round, orderIndex])
+}
+
+enum RoundType {
+  KHOI_DONG_RIENG // Khởi động - Lượt riêng
+  KHOI_DONG_CHUNG // Khởi động - Lượt chung
+  VUOT_CHUONG_NGAI_VAT // Vượt chướng ngại vật
+  TANG_TOC // Tăng tốc
+  VE_DICH // Về đích
+  CAU_HOI_PHU // Câu hỏi phụ
+}
+
+enum QuestionType {
+  FILL_BLANK // Điền vào chỗ trống
+  TRUE_FALSE // Đúng/Sai
+  MULTIPLE_CHOICE // Lựa chọn đáp án
+  IMAGE_HINT // Có hình ảnh gợi ý
+  AUDIO_HINT // Có đoạn nhạc gợi ý
+  VIDEO_HINT // Video hint
+  QUICK_LOOK // Nhìn nhanh (Tăng tốc)
+  ARRANGEMENT // Sắp xếp (Tăng tốc)
+  REASONING // Suy luận (Tăng tốc)
+  AUDIO_CLIP // Đoạn băng (Tăng tốc)
+}
+
+enum MediaType {
+  IMAGE
+  AUDIO
+  VIDEO
+}
+
+model Answer {
+  id              String    @id @default(cuid())
+  questionId      String
+  candidateId     String
+  submittedAnswer String?   @db.Text
+  isCorrect       Boolean? // null until validated
+  pointsAwarded   Int       @default(0)
+  pointsDeducted  Int       @default(0)
+  submittedAt     DateTime  @default(now())
+  validatedAt     DateTime?
+
+  // For timing-based scoring (Tang toc)
+  submissionOrder Int? // 1st, 2nd, 3rd, 4th
+
+  // For buzzer-based questions
+  buzzedAt DateTime? // for Khoi dong chung, Ve dich steal attempts
+
+  question  Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  candidate RoomParticipant @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@index([questionId, candidateId])
+}
+
+model GameState {
+  id                String    @id @default(cuid())
+  roomId            String    @unique
+  currentRound      RoundType
+  currentQuestionId String?
+  roundState        Json // flexible state per round type
+  isPaused          Boolean   @default(false)
+  timerStartedAt    DateTime?
+  timerDuration     Int? // seconds
+
+  // Vuot chuong ngai vat specific
+  revealedPositions   Int[] @default([]) // which puzzle pieces are revealed
+  currentTurnPosition Int? // which candidate's turn (1-4)
+
+  // Ve dich specific
+  currentCandidateTurn String? // candidateId whose turn it is
+  selectedQuestions    String[] @default([]) // questionIds for current candidate's package
+  starQuestionId       String? // which question has the star
+
+  updatedAt DateTime @updatedAt
+
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+}
+
+model MatchResult {
+  id          String   @id @default(cuid())
+  roomId      String   @unique
+  winnerId    String? // candidateId
+  finalScores Json // {candidateId: finalScore}
+  completedAt DateTime @default(now())
+
+  room Room @relation(fields: [roomId], references: [id], onDelete: Cascade)
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  roomId    String
+  userId    String?
+  eventType String // "BUZZ", "SUBMIT", "VALIDATE", "SCORE_UPDATE", etc.
+  eventData Json
+  timestamp DateTime @default(now())
+
+  @@index([roomId, timestamp])
+}
