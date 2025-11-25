@@ -12,16 +12,14 @@ export default function ProtectedRoute({ children }) {
     useEffect(() => {
         const verifyUser = async () => {
             try {
-                const res = await fetch(
-                    `${import.meta.env.VITE_API_URL}/api/auth/me`,
-                    {
-                        method: "POST",
-                        credentials: "include",
-                    }
-                );
+                const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/me`, {
+                    method: "POST",
+                    credentials: "include",
+                });
                 if (res.ok) {
                     const data = await res.json();
-                    setUser(data.user);
+                    console.log(data)
+                    setUser(data);
                     setIsAuthenticated(true);
                 } else {
                     setIsAuthenticated(false);
@@ -46,6 +44,13 @@ export default function ProtectedRoute({ children }) {
             </div>
         );
     }
+    // if (user.isVerified === false) {
+    //     return (
+    //         <div className="flex items-center justify-center min-h-screen">
+    //             <div className="text-lg">ABCDEF</div>
+    //         </div>
+    //     );
+    // }
     if (!isAuthenticated) {
         // navigate('/login')
         return null;

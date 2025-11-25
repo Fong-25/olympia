@@ -6,7 +6,7 @@ export const createUser = async ({ email, fullName, password }) => {
         data: {
             fullName,
             email,
-            password
+            password,
         },
         select: {
             id: true,

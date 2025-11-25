@@ -39,15 +39,7 @@ export const signup = async (req, res) => {
             email,
             password: hashedPassword,
         })
-        const token = jwt.sign({ userId: newUser.id, }, JWT_SECRET, { expiresIn: '30d' })
 
-        res.cookie('token', token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-            path: '/',
-            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-        })
         return res.status(201).json({
             message: 'User registered successfully.',
             user: {
@@ -120,11 +112,13 @@ export const getCurrentUser = async (req, res) => {
         const decoded = jwt.verify(token, JWT_SECRET);
 
         const user = await getUserById(decoded.userId)
+        console.log(user)
         return res.status(200).json({
             id: user.id,
             fullName: user.fullName,
             email: user.email,
-            avatarUrl: user.avatarUrl
+            avatarUrl: user.avatarUrl,
+            isVerified: user.isVerified
         });
     } catch (error) {
         console.error("Get current user error:", error);

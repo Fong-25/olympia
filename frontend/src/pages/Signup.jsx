@@ -38,8 +38,8 @@ export default function SignUp() {
 
             const data = await res.json()
             if (res.ok) {
-                toast.success("Account created successfully!")
-                navigate("/lobby")
+                toast.success("Account created successfully! Login to continue")
+                navigate("/login")
             } else {
                 toast.error(data.message || "Signup failed")
             }
