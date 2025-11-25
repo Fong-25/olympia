@@ -117,12 +117,9 @@ export const getCurrentUser = async (req, res) => {
         if (!token) {
             return res.status(401).json({ message: 'Unauthorized' });
         }
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-        console.log(decoded.userId)
+        const decoded = jwt.verify(token, JWT_SECRET);
 
         const user = await getUserById(decoded.userId)
-        console.log(user)
         return res.status(200).json({
             id: user.id,
             fullName: user.fullName,
