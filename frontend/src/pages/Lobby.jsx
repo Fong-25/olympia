@@ -1,7 +1,15 @@
+import { useNavigate, Link } from "react-router-dom"
+
 export default function Lobby() {
+    const navigate = useNavigate()
+    const handleTest = () => {
+        navigate('/test')
+        console.log('Navigated')
+    }
     return (
         <>
-            <h1 className="bg-green-50">Hello World</h1>
+            <button onClick={handleTest} className="bg-green-50">Hello World</button>
+            <Link to='/test' >AAAAAAAA</Link>
         </>
     )
 }
