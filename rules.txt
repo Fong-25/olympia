@@ -1,77 +1,47 @@
-Khởi động
+1.Khởi động
 Phần thi này được chia thành 2 lượt: lượt riêng và lượt chung.
-
 Trong lượt riêng, mỗi thí sinh trả lời 6 câu hỏi. Thời gian suy nghĩ cho mỗi câu hỏi là 3 giây tính từ lúc người dẫn chương trình đọc xong câu hỏi. Trả lời đúng được 10 điểm, trả lời sai không bị trừ điểm.
-
 Trong lượt chung, các thí sinh trả lời 12 câu hỏi. 1 trong 4 thí sinh sẽ giành quyền trả lời bằng cách bấm chuông nhanh.
-
 Thời gian suy nghĩ cho mỗi câu hỏi là 3 giây tính từ lúc thí sinh giành được quyền trả lời. Mỗi câu trả lời đúng được 10 điểm. Trả lời sai hoặc bấm chuông mà không có câu trả lời sau 3 giây bị trừ 5 điểm.
-
 Thí sinh có thể bấm chuông trong khi người dẫn chương trình đang đọc câu hỏi. Sau 3 giây tính từ thời điểm người dẫn chương trình đọc xong câu hỏi, nếu không có thí sinh nào giành quyền trả lời, câu hỏi đó sẽ bị bỏ qua.
-
 Có 3 loại câu hỏi được sử dụng trong phần thi này:
-
 Câu hỏi yêu cầu tìm đáp án đúng, điền vào chỗ trống.
 Câu hỏi lựa chọn: đúng sai, chọn các đáp án cho sẵn.
 Câu hỏi có hình ảnh hoặc đoạn nhạc gợi ý.
 Thí sinh có thể thay đổi đáp án liên tục trước thời điểm người dẫn chương trình công bố đáp án và đáp án cuối cùng sẽ được ghi nhận. Nếu không thay đổi, chương trình sẽ ghi nhận đáp án đầu tiên.
-
-Vượt chướng ngại vật
+2.Vượt chướng ngại vật
 Có 4 từ hàng ngang, cũng chính là 4 gợi ý liên quan đến Chướng ngại vật mà các thí sinh phải đi tìm.
-
 Có 1 hình ảnh với 5 miếng ghép. 4 miếng ghép tương ứng với 4 từ hàng ngang ở 4 góc và được đánh số cố định, 1 miếng ghép ở ô trung tâm và cũng là gợi ý cuối cùng.
-
 Mỗi thí sinh có tối đa 1 lượt lựa chọn để chọn trả lời một trong các từ hàng ngang này, bắt đầu từ thí sinh ở vị trí số 1. Các thí sinh trả lời bằng máy tính. Thời gian suy nghĩ cho mỗi từ hàng ngang là 15 giây. Trả lời đúng được 10 điểm.
-
 Nếu 1 thí sinh trước khi lựa chọn từ hàng ngang mà bấm chuông trả lời Chướng ngại vật và bị loại, thí sinh ở vị trí tiếp theo sẽ được lựa chọn từ hàng ngang. Trong trường hợp này, đối với các thí sinh chưa bị loại, nếu thí sinh ở vị trí cuối cùng hoàn thành lượt lựa chọn từ hàng ngang mà vẫn còn từ hàng ngang chưa được lựa chọn, lượt lựa chọn sẽ quay trở lại với thí sinh ở vị trí số 1.
-
 Câu trả lời mà thí sinh đưa ra yêu cầu phải đúng chính tả. Nếu có bất kỳ sai sót về kí tự, dấu câu, ngữ pháp, câu trả lời của thí sinh đó sẽ không được công nhận. Đôi khi câu trả lời có ý nghĩa tương đồng và có cùng tổng số chữ cái với đáp án của chương trình cũng được chấp nhận.
-
 Sau khi trả lời đúng từ hàng ngang, miếng ghép tương ứng với số thứ tự của từ hàng ngang đó sẽ được mở ra. Nếu không trả lời được từ hàng ngang, miếng ghép tương ứng với số thứ tự của từ hàng ngang đó sẽ không được mở ra.
-
 Thí sinh có thể bấm chuông trả lời Chướng ngại vật bất cứ lúc nào. Trả lời đúng Chướng ngại vật trong 1 từ hàng ngang đầu tiên được 60 điểm, trong 2 từ hàng ngang được 50 điểm, trong 3 từ hàng ngang được 40 điểm, trong 4 từ hàng ngang được 30 điểm.
-
 Sau khi cả 4 từ hàng ngang đã được mở ra mà không có thí sinh nào trả lời Chướng ngại vật, câu hỏi trong gợi ý cuối cùng sẽ được đưa ra ở ô trung tâm của hình ảnh. Trả lời đúng câu hỏi ở ô trung tâm được 10 điểm, trả lời sai thì ô trung tâm sẽ không được mở ra. Các thí sinh sẽ có 15 giây suy nghĩ để đưa ra Chướng ngại vật. Trả lời đúng Chướng ngại vật sau gợi ý cuối cùng ở ô trung tâm chỉ được 20 điểm.
-
 Nếu trả lời sai Chướng ngại vật, thí sinh sẽ bị loại khỏi phần thi này.
-
-Tăng tốc
+3.Tăng tốc
 Có 4 câu hỏi với thời gian suy nghĩ cho mỗi câu hỏi lần lượt là 20, 20, 30 và 30 giây.
-
 Các thí sinh trả lời bằng máy tính. Trả lời đúng và nhanh nhất được 40 điểm. Trả lời đúng và nhanh thứ 2 được 30 điểm. Trả lời đúng và nhanh thứ 3 được 20 điểm. Trả lời đúng và nhanh thứ 4 được 10 điểm.
-
 Câu trả lời mà thí sinh đưa ra yêu cầu phải đúng chính tả. Nếu có bất kỳ sai sót về kí tự, dấu câu, ngữ pháp, câu trả lời của thí sinh đó sẽ không được công nhận. Đôi khi câu trả lời có ý nghĩa tương đồng với đáp án của chương trình cũng được chấp nhận.
-
 Có 4 loại câu hỏi được sử dụng trong phần thi này:
-
 Câu hỏi nhìn nhanh
 Câu hỏi sắp xếp
 Câu hỏi suy luận
 Câu hỏi đoạn băng
 Trong trường hợp có nhiều thí sinh cùng trả lời đúng trong cùng một khoảng thời gian, những thí sinh đó cùng nhận được một mức điểm tùy theo mức độ trả lời nhanh câu hỏi đó.
-
-Về đích
+4.Về đích
 Có 2 mức điểm 20, 30 điểm.
-
 Thời gian suy nghĩ và trả lời cho câu hỏi 20 điểm là 15 giây, câu hỏi 30 điểm là 20 giây.
-
 Thí sinh có điểm số cao nhất sau phần thi Tăng tốc sẽ bắt đầu trước và sau đó là thí sinh có điểm số cao nhất trong các thí sinh còn lại. Nếu các thí sinh có cùng điểm số, thí sinh sẽ bắt đầu từ vị trí đứng thấp nhất.
-
 Mỗi thí sinh có một lượt lựa chọn 3 câu hỏi 20, 30 điểm để tạo thành một gói điểm của mình. Thí sinh nếu trả lời đúng ghi được điểm của câu hỏi đó, nếu trả lời sai thì 1 trong 3 thí sinh còn lại sẽ giành quyền trả lời bằng cách bấm chuông nhanh trong 5 giây. Thí sinh trả lời đúng sẽ giành được điểm từ thí sinh trả lời sai, thí sinh bấm chuông mà trả lời sai sẽ bị trừ một nửa số điểm của câu hỏi.
-
 Trong câu hỏi thực hành, chương trình sẽ giới thiệu các dụng cụ liên quan đến câu hỏi thực hành đưa ra cho thí sinh. Đối với câu hỏi 20 điểm, thời gian suy nghĩ là 15 giây và thời gian thực hành là 30 giây. Đối với câu hỏi 30 điểm, thời gian suy nghĩ là 20 giây và thời gian thực hành là 60 giây. Thí sinh nếu trả lời đúng hoặc thực hành đạt yêu cầu sẽ ghi được điểm của câu hỏi đó, nếu trả lời sai hoặc thực hành không đạt yêu cầu thì 1 trong 3 thí sinh còn lại sẽ giành quyền trả lời bằng cách bấm chuông nhanh trong 5 giây. Đối với câu hỏi 20 điểm, thời gian thực hành là 20 giây. Đối với câu hỏi 30 điểm, thời gian thực hành là 40 giây. Thí sinh trả lời đúng hoặc thực hành đạt yêu cầu sẽ giành được điểm từ thí sinh trả lời sai, thí sinh bấm chuông mà trả lời sai hoặc thực hành không đạt yêu cầu sẽ bị trừ một nửa số điểm của câu hỏi.
-
 Mỗi thí sinh được đặt ngôi sao hy vọng 1 lần. Trả lời đúng câu hỏi có ngôi sao hy vọng được gấp đôi số điểm của câu hỏi đó. Trả lời sai sẽ bị trừ đi số điểm của câu hỏi, kể cả các thí sinh còn lại có giành quyền trả lời hay không. Thí sinh phải đặt ngôi sao hy vọng trước khi câu hỏi được đọc lên bởi người dẫn chương trình hoặc hiện lên trên màn hình.
-
 Thứ tự tham gia phần thi của các thí sinh như sau:
-
 Lượt 1: Thí sinh có điểm số cao nhất sau phần thi Tăng tốc, và có vị trí đứng thấp nhất trong các thí sinh có cùng điểm số.
 Lượt 2: Thí sinh có điểm số cao nhất trong các thí sinh còn lại, và có vị trí đứng thấp nhất trong các thí sinh có cùng điểm số. Điểm số được tính tại thời điểm sau khi thí sinh ở lượt 1 hoàn thành phần thi.
 Lượt 3: Thí sinh có điểm số cao hơn trong 2 thí sinh còn lại, và có vị trí đứng thấp hơn nếu 2 thí sinh có cùng điểm số. Điểm số được tính tại thời điểm sau khi thí sinh ở lượt 2 hoàn thành phần thi.
 Lượt 4: Thí sinh cuối cùng chưa bắt đầu phần thi.
 Với thí sinh tham gia phần thi Về đích, trong khoảng thời gian quy định, thí sinh có thể thay đổi đáp án liên tục. Chương trình sẽ ghi nhận đáp án cuối cùng của thí sinh sau khi hết giờ. Với thí sinh giành quyền trả lời, chương trình sẽ chỉ ghi nhận đáp án đầu tiên của thí sinh đó.
-
-Câu hỏi phụ
+5.Câu hỏi phụ
 Sau phần thi Về đích, các thí sinh có cùng số điểm sẽ bước vào phần thi Câu hỏi phụ. Các thí sinh trả lời 3 câu hỏi. Thời gian suy nghĩ cho mỗi câu hỏi là 15 giây. Thí sinh bấm chuông nhanh nhất trả lời đúng sẽ là thí sinh có số điểm cao nhất bằng với số điểm của thí sinh còn lại. Nếu trả lời sai, các thí sinh sẽ bước sang câu hỏi tiếp theo. Sau 3 câu hỏi, nếu không tìm được thí sinh thắng cuộc, các thí sinh sẽ phải bốc thăm để chọn ra thí sinh thắng cuộc.
-
 Trong một câu hỏi, nếu có thí sinh bấm chuông trả lời trước khi có hiệu lệnh của người dẫn chương trình, thí sinh đó sẽ bị mất quyền trả lời câu hỏi.
