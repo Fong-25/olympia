@@ -112,13 +112,15 @@ export const getCurrentUser = async (req, res) => {
         const decoded = jwt.verify(token, JWT_SECRET);
 
         const user = await getUserById(decoded.userId)
-        console.log(user)
+        if (!user) {
+            return res.status(401).json({ message: 'Unauthorized' })
+        }
         return res.status(200).json({
             id: user.id,
             fullName: user.fullName,
             email: user.email,
+            isVerified: user.isVerified,
             avatarUrl: user.avatarUrl,
-            isVerified: user.isVerified
         });
     } catch (error) {
         console.error("Get current user error:", error);
