@@ -9,41 +9,29 @@ import Test from './pages/Test.jsx'
 
 export default function App() {
   return (
-    <SocketProvider>
-      <div className='min-h-screen bg-background'>
+    <div className='min-h-screen bg-background'>
+      <Router>
+        <Toaster position='top-right' />
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
 
-        <Router>
-          <Toaster position='top-right' />
-          <Routes>
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route
-              path='/lobby'
-              element={
-                <ProtectedRoute>
-                  <Lobby />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path='/test'
-              element={
-                <ProtectedRoute>
-                  <Test />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path='/'
-              element={
-                <ProtectedRoute>
-                  <Lobby />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </Router>
-      </div>
-    </SocketProvider>
+          <Route
+            path='/*'
+            element={
+              <ProtectedRoute>
+                <SocketProvider>
+                  <Routes>
+                    <Route path='/lobby' element={<Lobby />} />
+                    <Route path='/test' element={<Test />} />
+                    <Route path='/' element={<Lobby />} />
+                  </Routes>
+                </SocketProvider>
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </div>
   )
 }
