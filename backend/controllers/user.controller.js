@@ -1,4 +1,5 @@
 import { updateUserProfile, validateEmail, getUserById } from "../services/user.service.js";
+import cloudinary from "../config/cloudinary.config.js";
 
 export const uploadAvatar = async (req, res) => {
     try {
@@ -6,9 +7,23 @@ export const uploadAvatar = async (req, res) => {
             return res.staus(404).json({ message: "No image uploaded" })
         }
         const userId = req.userId // From auth middleware
-        const avatarUrl = req.file.path // Cloudinary URL
+        const user = await getUserById(userId)
+
+        // Delete old avatar from Cloudinary if exists
+        if (user.avatarUrl) {
+            try {
+                const urlParts = user.avatarUrl.split('/')
+                const publicIdWithExt = urlParts[urlParts.length - 1]
+                const publicId = `avatars/${publicIdWithExt.split('.')[0]}`
+                await cloudinary.uploader.destroy(publicId)
+            } catch (deleteError) {
+                console.error('Failed to delete old avatar:', deleteError)
+                // The upload process will continue even if this got error
+            }
+        }
 
         // Update user with new avatar
+        const avatarUrl = req.file.path // Cloudinary URL
         const updatedUser = await updateUserProfile(userId, { avatarUrl })
 
         return res.status(200).json({
