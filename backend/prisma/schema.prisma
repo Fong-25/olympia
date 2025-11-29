@@ -18,7 +18,7 @@ model User {
   email      String   @unique
   password   String // hashed
   fullName   String
-  isVerified Boolean  @default(false)
+  // isVerified Boolean  @default(false)
   avatarUrl  String? // Cloudinary URL
   createdAt  DateTime @default(now())
 
