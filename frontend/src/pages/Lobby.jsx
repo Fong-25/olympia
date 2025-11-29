@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom"
 import Sidebar from "../components/Sidebar"
-import { Plus, Trash2 } from "lucide-react"
+import { Plus, Trash2, Sword } from "lucide-react"
 import { toast } from 'react-hot-toast'
 import { useState, useEffect } from "react"
 
@@ -67,14 +67,25 @@ export default function Lobby() {
                 </header>
 
                 {/* Create Button */}
-                <div className="mb-8">
-                    <button
-                        onClick={handleCreateMatch}
-                        className="flex items-center gap-2 bg-white text-zinc-950 px-6 py-3 rounded-lg font-semibold hover:bg-zinc-100 transition-colors"
-                    >
-                        <Plus size={20} />
-                        Create New Match
-                    </button>
+                <div className="flex items-center justify-start gap-8">
+                    <div className="mb-8">
+                        <button
+                            onClick={handleCreateMatch}
+                            className="flex items-center gap-2 bg-white text-zinc-950 px-6 py-3 rounded-lg font-semibold hover:bg-zinc-100 transition-colors"
+                        >
+                            <Plus size={20} />
+                            Create New Match
+                        </button>
+                    </div>
+                    <div className="mb-8">
+                        <button
+                            // onClick={ }
+                            className="flex items-center gap-2 bg-white text-zinc-950 px-6 py-3 rounded-lg font-semibold hover:bg-zinc-100 transition-colors"
+                        >
+                            <Sword size={20} />
+                            Join a Match
+                        </button>
+                    </div>
                 </div>
 
                 {/* Matches List */}
