@@ -5,7 +5,6 @@ import { Toaster } from 'react-hot-toast'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Lobby from './pages/Lobby.jsx'
 import { SocketProvider } from './contexts/SocketContext.jsx'
-import Test from './pages/Test.jsx'
 import Profile from './pages/User.jsx'
 
 export default function App() {
@@ -24,7 +23,6 @@ export default function App() {
                 <SocketProvider>
                   <Routes>
                     <Route path='/lobby' element={<Lobby />} />
-                    <Route path='/test' element={<Test />} />
                     <Route path='/' element={<Lobby />} />
                     <Route path='/profile' element={<Profile />} />
                   </Routes>
