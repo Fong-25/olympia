@@ -5,6 +5,10 @@ import { toast } from 'react-hot-toast'
 import { useState, useEffect } from "react"
 
 export default function Lobby() {
+    const [data, setData] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    // Placeholder room, use room from the data constant after implement room data
     const [matches, setMatches] = useState([
         { id: "match_001", name: "Championship Final", createdBy: "user_001", createdAt: "2024-11-28" },
         { id: "match_002", name: "Friendly Match", createdBy: "user_002", createdAt: "2024-11-27" },
@@ -25,9 +29,36 @@ export default function Lobby() {
         setMatches(matches.filter((match) => match.id !== id))
     }
 
+    const fetchLobby = async () => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lobby`, {
+                credentials: "include",
+            })
+            if (res.ok) {
+                const result = await res.json()
+                setData(result)
+            }
+        } catch (err) {
+            console.error("Dashboard fetch error:", err)
+        } finally {
+            setLoading(false)
+        }
+    }
+    useEffect(() => {
+        fetchLobby()
+    }, [])
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+            </div>
+        )
+    }
+
     return (
         <div className="flex">
-            <Sidebar />
+            <Sidebar user={data.user} />
             <main className="ml-56 flex-1 bg-zinc-950 min-h-screen p-8">
                 {/* Header */}
                 <header className="mb-12">

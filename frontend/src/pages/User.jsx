@@ -1,17 +1,48 @@
 import { User } from "lucide-react"
 import Sidebar from "../components/Sidebar"
+import { useState, useEffect } from "react"
 
 export default function Profile() {
-    const user = {
-        id: "user_001",
-        fullname: "John Doe",
-        email: "john@example.com",
-        avatarUrl: null,
+    // const user = {
+    //     id: "user_001",
+    //     fullname: "John Doe",
+    //     email: "john@example.com",
+    //     avatarUrl: null,
+    // }
+
+    const [data, setData] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    const fetchLobby = async () => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lobby`, {
+                credentials: "include",
+            })
+            if (res.ok) {
+                const result = await res.json()
+                setData(result)
+            }
+        } catch (err) {
+            console.error("Dashboard fetch error:", err)
+        } finally {
+            setLoading(false)
+        }
+    }
+    useEffect(() => {
+        fetchLobby()
+    }, [])
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+            </div>
+        )
     }
 
     return (
         <div className="flex">
-            <Sidebar />
+            <Sidebar user={data.user} />
             <main className="ml-64 flex-1 bg-zinc-950 min-h-screen p-8">
                 {/* Header */}
                 <header className="mb-12">
@@ -24,10 +55,10 @@ export default function Profile() {
                     <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-8">
                         {/* Avatar */}
                         <div className="flex justify-center mb-8">
-                            {user.avatarUrl ? (
+                            {data.user.avatarUrl ? (
                                 <img
-                                    src={user.avatarUrl || "/placeholder.svg"}
-                                    alt={user.fullname}
+                                    src={data.user.avatarUrl || "/placeholder.svg"}
+                                    alt={data.user.fullName}
                                     className="w-32 h-32 rounded-full object-cover"
                                 />
                             ) : (
@@ -41,15 +72,15 @@ export default function Profile() {
                         <div className="space-y-6 text-center mb-8">
                             <div>
                                 <p className="text-sm text-zinc-400 mb-1">Full Name</p>
-                                <p className="text-2xl font-semibold text-white">{user.fullname}</p>
+                                <p className="text-2xl font-semibold text-white">{data.user.fullName}</p>
                             </div>
                             <div>
                                 <p className="text-sm text-zinc-400 mb-1">Email</p>
-                                <p className="text-xl text-white">{user.email}</p>
+                                <p className="text-xl text-white">{data.user.email}</p>
                             </div>
                             <div>
                                 <p className="text-sm text-zinc-400 mb-1">User ID</p>
-                                <p className="text-lg text-zinc-300 font-mono">{user.id}</p>
+                                <p className="text-lg text-zinc-300 font-mono">{data.user.id}</p>
                             </div>
                         </div>
 

@@ -1,14 +1,14 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Home, User, LogOut } from 'lucide-react'
 
-export default function Sidebar() {
+export default function Sidebar({ user }) {
     const location = useLocation()
 
-    const user = {
-        id: "user_001",
-        fullName: "John Doe",
-        avatarUrl: null
-    }
+    // const user = {
+    //     id: "user_001",
+    //     fullName: "John Doe",
+    //     avatarUrl: null
+    // }
     const isActive = (path) => location.pathname === path
 
     const getName = (fullName) => {
@@ -21,11 +21,18 @@ export default function Sidebar() {
             <div className='mb-8 pb-8 border-b border-zinc-800'>
                 <div className='flex items-center gap-4 mb-4 justify-start w-full flex-row'>
                     {user.avatarUrl ? (
-                        <img
-                            src={user.avatarUrl || ""}
-                            alt={user.fullName}
-                            className='w-12 h-12 rounded-full object-cover'
-                        />
+                        <>
+                            <div>
+                                <img
+                                    src={user.avatarUrl || ""}
+                                    alt={user.fullName}
+                                    className='w-12 h-12 rounded-full object-cover flex items-center justify-center'
+                                />
+                            </div>
+                            <span className='text-sm font-medium text-zinc-100'>
+                                {getName(user.fullName)}
+                            </span>
+                        </>
                     ) : (
                         <>
                             <div className='w-12 h-12 rounded-full bg-zinc-700 flex items-center justify-center'>

@@ -18,7 +18,6 @@ export default function ProtectedRoute({ children }) {
                 });
                 if (res.ok) {
                     const data = await res.json();
-                    console.log(data)
                     setUser(data);
                     setIsAuthenticated(true);
                 } else {
