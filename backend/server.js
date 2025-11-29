@@ -7,25 +7,18 @@ import authRoutes from './routes/auth.route.js'
 import dotenv from 'dotenv'
 dotenv.config()
 import http from 'http'
-import { setupSocket } from "./socket.js";
-import { Server } from "socket.io";
+import { setupSocket } from "./socket/index.js";
 
 const app = express()
-
 const server = http.createServer(app)
-const io = new Server(server, {
-    cors: {
-        origin: 'http://localhost:5173',
-        credentials: true
-    }
-})
+
+const io = setupSocket(server)
 
 app.use(cors({
     origin: ['http://localhost:5174', 'http://localhost:5173'],
     credentials: true
 }))
 
-setupSocket(io)
 app.use(cookieParser())
 app.use(express.json())
 
