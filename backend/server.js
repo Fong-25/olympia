@@ -5,6 +5,7 @@ import { connectDB } from "./config/db.js";
 import path from 'path'
 import authRoutes from './routes/auth.route.js'
 import lobbyRoutes from './routes/lobby.route.js'
+import userRoutes from './routes/user.route.js'
 import dotenv from 'dotenv'
 dotenv.config()
 import http from 'http'
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes)
 app.use('/api/lobby', lobbyRoutes)
+app.use('/api/user', userRoutes)
 
 const PORT = process.env.PORT || 5000
 
