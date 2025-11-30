@@ -1,6 +1,7 @@
 // socket.js
 import { Server } from 'socket.io'
 import { verifySocketAuth } from './middlewares/auth.middleware.js'
+import { registerRoomHandlers } from './handlers/room.handler.js'
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -23,8 +24,8 @@ export const setupSocket = (httpServer) => {
 
         // Register all socket event handlers here
         // Example:
-        // registerRoomHandlers(io, socket) (from './handlers/room.handler.js')
         // registerTechHandlers(io, socket)
+        registerRoomHandlers(io, socket) //(from './handlers/room.handler.js')
 
         //Disconnect
         socket.on('disconnect', () => {

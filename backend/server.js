@@ -6,10 +6,11 @@ import path from 'path'
 import authRoutes from './routes/auth.route.js'
 import lobbyRoutes from './routes/lobby.route.js'
 import userRoutes from './routes/user.route.js'
-import dotenv from 'dotenv'
-dotenv.config()
+import roomRoutes from './routes/room.route.js'
 import http from 'http'
 import { setupSocket } from "./socket/index.js";
+import dotenv from 'dotenv'
+dotenv.config()
 
 const app = express()
 const server = http.createServer(app)
